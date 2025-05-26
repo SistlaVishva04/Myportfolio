@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 interface FormState {
   name: string;
@@ -70,30 +71,47 @@ export const Contact: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (validateForm()) {
+    setIsSubmitting(true);
+    setSubmitError('');
     
-    if (validateForm()) {
-      setIsSubmitting(true);
-      
-      // Simulate API call
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setSubmitSuccess(true);
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: '',
-        });
-        
-        // Reset success message after 5 seconds
-        setTimeout(() => {
-          setSubmitSuccess(false);
-        }, 5000);
-      }, 1500);
+    try {
+      const result = await emailjs.send(
+        'service_0q66hgk',
+        'template_ojxor8r',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        '8yAkQExpJkvETv522'
+      );
+
+      console.log(result.text);
+      setSubmitSuccess(true);
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+
+      // Hide success message after 5s
+      setTimeout(() => setSubmitSuccess(false), 5000);
+    } catch (error: any) {
+      console.error(error.text);
+      setSubmitError('Failed to send message. Please try again later.');
     }
-  };
+
+    setIsSubmitting(false);
+  }
+};
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -148,8 +166,8 @@ export const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Email</h4>
-                    <a href="mailto:vishnuvamsi04@gmail.com" className="text-dark-500 dark:text-dark-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                      vishnuvamsi04@gmail.com
+                    <a href="mailto:vishvasistla04@gmail.com" className="text-dark-500 dark:text-dark-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                      vishvasistla04@gmail.com
                     </a>
                   </div>
                 </div>
@@ -206,7 +224,7 @@ export const Contact: React.FC = () => {
               </a>
               
               <a
-                href="mailto:vishnuvamsi04@gmail.com"
+                href="mailto:vishvasistla04@gmail.com"
                 className="flex items-center justify-center p-3 bg-dark-100 dark:bg-dark-800 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-dark-600 dark:text-dark-300">
