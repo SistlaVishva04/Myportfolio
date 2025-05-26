@@ -81,9 +81,10 @@ const handleSubmit = async (e: React.FormEvent) => {
     setSubmitError('');
     
     try {
-      const result = await emailjs.send(
+      // 1. Send message to YOU
+      const resultToMe = await emailjs.send(
         'service_0q66hgk',
-        'template_ojxor8r',
+        'template_zal04ci', // your template to receive user message
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -92,8 +93,23 @@ const handleSubmit = async (e: React.FormEvent) => {
         },
         '8yAkQExpJkvETv522'
       );
+      console.log('Email sent to you:', resultToMe.text);
 
-      console.log(result.text);
+      // 2. Send confirmation to USER
+      const resultToUser = await emailjs.send(
+        'service_0q66hgk',
+        'template_ojxor8r', // your second template ID for user confirmation
+        {
+          to_name: formData.name,
+          to_email: formData.email,
+          subject: formData.subject,
+          user_message: formData.message, // optional if template includes it
+        },
+        '8yAkQExpJkvETv522'
+      );
+      console.log('Confirmation email sent to user:', resultToUser.text);
+
+      // Reset and show success
       setSubmitSuccess(true);
       setFormData({
         name: '',
@@ -102,10 +118,9 @@ const handleSubmit = async (e: React.FormEvent) => {
         message: '',
       });
 
-      // Hide success message after 5s
       setTimeout(() => setSubmitSuccess(false), 5000);
     } catch (error: any) {
-      console.error(error.text);
+      console.error(error.text || error);
       setSubmitError('Failed to send message. Please try again later.');
     }
 
