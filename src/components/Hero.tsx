@@ -124,7 +124,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="relative hidden lg:block"
+            className="relative block mx-auto"
           >
             <div className="w-80 h-80 md:w-96 md:h-96 mx-auto relative animate-float">
               <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-secondary-500 rounded-full opacity-20 blur-3xl"></div>
