@@ -35,7 +35,7 @@ export const Hero: React.FC = () => {
             >
               <TypeAnimation
                 sequence={[
-                  'Computer Science Student',
+                  'Software Engineer',
                   1000,
                   'Web Developer',
                   1000,
