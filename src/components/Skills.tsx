@@ -36,7 +36,7 @@ export const Skills: React.FC = () => {
     },
     { 
       name: 'Databases', 
-      skills: ['MongoDb','MySQL', 'JDBC'] 
+      skills: ['MongoDB','MySQL', 'JDBC'] 
     },
     { 
       name: 'Data Visualization', 

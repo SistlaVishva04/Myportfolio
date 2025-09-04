@@ -56,8 +56,8 @@ export const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              Passionate about programming and software development with hands-on experience
-              in website development and AI tools.
+              AI-Assisted Developer & Vibe Engineer
+Crafting intelligent web solutions and data-driven applications with AI-powered tools.
             </motion.p>
             
             <motion.div
