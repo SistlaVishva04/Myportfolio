@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-scroll';
-import { Heart, ArrowRight } from 'lucide-react';
+import {  ArrowRight } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -117,11 +117,11 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="pt-8 border-t border-dark-800 text-center text-dark-400">
-          <p className="flex items-center justify-center">
-            &copy; {currentYear} S V Vishnu Vamsi. All rights reserved. Made with 
-            <Heart className="mx-1 text-red-500" size={16} /> using React & Tailwind CSS.
-          </p>
+            <p>
+              © {currentYear} S V Vishnu Vamsi — Made with ❤️
+            </p>
         </div>
+
       </div>
     </footer>
   );

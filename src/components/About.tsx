@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code, Book, Briefcase, User } from 'lucide-react';
-import MyResume from '../resume/MyResume.pdf';
+import VamsiSistla_Resume from '../resume/VamsiSistla_Resume.pdf';
 export const About: React.FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -95,7 +95,7 @@ export const About: React.FC = () => {
                 className="btn-primary"
                 onClick={(e) => {
                   e.preventDefault();
-                  window.open(MyResume, '_blank');
+                  window.open(VamsiSistla_Resume, '_blank');
                 }}
               >
                 View Resume

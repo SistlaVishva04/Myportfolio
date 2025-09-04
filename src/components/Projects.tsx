@@ -45,7 +45,7 @@ export const Projects: React.FC = () => {
       detailedDescription: 'WPrice is a smart online price comparison platform I built to help users make informed shopping decisions. It allows users to browse a wide range of products and instantly compare prices across top e-commerce platforms like Amazon, Flipkart, and Meesho. With a clean, user-friendly interface, WPrice ensures a seamless experience where users can view product details, ratings, and quickly redirect to their preferred platform to purchase',
       technologies: ['React', 'Node.js', 'Express', 'typescript'],
       image: pricewise2,
-      github: 'https://github.com/SistlaVishva04/',
+      github: 'https://github.com/SistlaVishva04/PriceWiseProject',
       date: 'June-2025'
     },
     {
@@ -55,7 +55,7 @@ export const Projects: React.FC = () => {
       detailedDescription: 'Created a web-based API Keys Generator platform that grants users free access to a vast number of public API keys depending on their requirements, such as AI models (OpenAI, Gemini), weather services, maps, and more.',
       technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
       image: APIIcon,
-      github: 'hhttps://github.com/SistlaVishva04/APIKeyGenerator',
+      github: 'https://github.com/SistlaVishva04/APIKeyGenerator',
       liveDemo: 'https://drive.google.com/file/d/1GrGVimqaJfeLN17RGbXt5uHAYYE4tuE1/view?usp=drivesdk',
       date: 'Apr 2025'
     }

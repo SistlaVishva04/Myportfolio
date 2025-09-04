@@ -20,14 +20,14 @@ export const Skills: React.FC = () => {
     },
     { 
       name: 'Web Development', 
-      skills: ['React', 'Node.js', 'HTML', 'CSS', 'JavaScript', 'Flask'] 
+      skills: ['React', 'Node.js', 'HTML', 'CSS', 'JavaScript', 'Flask', 'Bootstrap','Django','REST APIs'] 
     },
     { 
       name: 'AI & ML', 
-      skills: ['Streamlit', 'Data Preprocessing & Feature Engineering', 'Machine Learning Models'] 
+      skills: ['Streamlit', 'Data Preprocessing & Feature Engineering', 'Machine Learning Models','Data Analysis',] 
     },
     { 
-      name: 'Version Control', 
+      name: 'Version Control ', 
       skills: ['Git', 'GitHub'] 
     },
     { 
@@ -36,15 +36,15 @@ export const Skills: React.FC = () => {
     },
     { 
       name: 'Databases', 
-      skills: ['MySQL', 'JDBC'] 
+      skills: ['MongoDb','MySQL', 'JDBC'] 
     },
     { 
       name: 'Data Visualization', 
-      skills: ['PowerBI', 'Data Visualization Libraries'] 
+      skills: ['PowerBI', 'Tableau', 'Matplotlib', 'Seaborn'] 
     },
     { 
       name: 'Other Skills', 
-      skills: ['Prompt Engineering', 'Technical Writing', 'Problem Solving'] 
+      skills: ['Prompt Engineering','Vibe Coder', 'Problem Solving'] 
     }
   ];
 

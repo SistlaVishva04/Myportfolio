@@ -35,11 +35,13 @@ export const Hero: React.FC = () => {
             >
               <TypeAnimation
                 sequence={[
-                  'Software Engineer',
+                  'AI Assistant Developer',
                   1000,
-                  'Web Developer',
+                  'Vibe Coder',
                   1000,
-                  'Prompt Engineer',
+                  'Software Developer',
+                  1000,
+                  'Data Analyst',
                   1000,
                 ]}
                 wrapper="span"
