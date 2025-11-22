@@ -6,7 +6,8 @@ import promptengcertificate from '../certificates/promptengcertificate.pdf';
 import javacertificate from '../certificates/javacertificate.pdf';
 import htmlcertificate from '../certificates/htmlcertificate.pdf';
 import pythoncertificate from  '../certificates/pythoncertificate.pdf';
-
+import datacertificate  from  '../certificates/DataScience-Analytics certificate.pdf';
+import ccc_Certificate from '../certificates/CCC_completion_certificate.jpeg'
 interface Certification {
   id: number;
   title: string;
@@ -49,11 +50,29 @@ export const Certification: React.FC = () => {
       issuer: 'Infosys Spring Board',
       date: '2024',
       link: javacertificate
+    },
+    {
+      id: 5,
+      title: 'Data Analytics',
+      issuer: 'HP Life',
+      date: '2024',
+      link : datacertificate
+    },
+    {
+      id: 6,
+      title: 'Competitive Coding',
+      issuer: 'CCC',
+      date: '2024',
+      link : ccc_Certificate
     }
   ];
 
   const achievementsList = [
-    'Shortlisted for TechXcelerate Hackathon (AI & ML) from more than 250+ teams'
+    'Shortlisted for TechXcelerate Hackathon (AI & ML) from more than 250+ teams',
+    'HackerRank: Python (5), Java (4), Problem Solving (3)',
+    'Top-10 in Techxcelerate 2k24 Hackathon',
+    'Solved 250+ LeetCode problems',
+    'Earned 50-day and 100-day LeetCode streak badges.'
   ];
 
   const containerVariants = {

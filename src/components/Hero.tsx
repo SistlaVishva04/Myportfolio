@@ -3,7 +3,7 @@ import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
-import mydp1 from '../img/mydp1.jpg';
+import mydp1 from '../img/my_img.jpg';
 export const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 pb-10">
