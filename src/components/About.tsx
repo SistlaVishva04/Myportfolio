@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code, Book, Briefcase, User } from 'lucide-react';
-import Vamsi_Sistla__Resume from '../resume/Vamsi_Sistla__Resume.pdf';
+import MYResume from '../resume/Vamsi_Sistla_Resume (SDE).pdf';
 export const About: React.FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -70,18 +70,20 @@ export const About: React.FC = () => {
             className="space-y-6"
           >
             <h3 className="text-2xl font-semibold mb-4 dark:text-white">Who I Am</h3>
-            <p className="text-dark-600 dark:text-dark-300">
-              I'm a Computer Science and Engineering (CSE) student passionate about programming and software development. 
-              I have hands-on experience in website development and enjoy learning new technologies.
-            </p>
-            <p className="text-dark-600 dark:text-dark-300">
-              I am also a prompt engineer who can write efficient prompts and use AI tools at its high level. 
-              I'm eager to apply my skills to solve real-world problems and work on innovative projects.
-            </p>
-            <p className="text-dark-600 dark:text-dark-300">
-              My interests include reading mythological books, researching mysteries of nature and God, and finding 
-              new ways to solve problems.
-            </p>
+
+<p className="text-dark-600 dark:text-dark-300">
+  I’m a Software Engineer passionate about building scalable systems and intelligent applications. 
+  I work across backend, full-stack, and AI-driven solutions using Java, Python, Node.js, and React. 
+  With strong foundations in Data Structures and Algorithms, I focus on writing clean, efficient code 
+  and designing reliable REST APIs and production-ready architectures.
+</p>
+
+<p className="text-dark-600 dark:text-dark-300">
+  I also specialize in AI and Data Analytics, building LLM-powered systems, automation workflows, 
+  and interactive dashboards using Python, SQL, Power BI, and modern ML tools. 
+  I enjoy integrating AI into real-world workflows to improve efficiency, accuracy, and decision-making, 
+  and I’m always eager to work on impactful projects that combine engineering with intelligent insights.
+</p>
 
             <motion.div
               className="pt-4"
@@ -95,7 +97,7 @@ export const About: React.FC = () => {
                 className="btn-primary"
                 onClick={(e) => {
                   e.preventDefault();
-                  window.open(Vamsi_Sistla__Resume, '_blank');
+                  window.open(MYResume, '_blank');
                 }}
               >
                 View Resume

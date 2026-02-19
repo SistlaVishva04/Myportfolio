@@ -8,6 +8,8 @@ import htmlcertificate from '../certificates/htmlcertificate.pdf';
 import pythoncertificate from  '../certificates/pythoncertificate.pdf';
 import datacertificate  from  '../certificates/DataScience-Analytics certificate.pdf';
 import ccc_Certificate from '../certificates/CCC_completion_certificate.jpeg'
+import AI_tools from '../certificates/Be10x_AI_tools_certificate.pdf'
+
 interface Certification {
   id: number;
   title: string;
@@ -30,6 +32,7 @@ export const Certification: React.FC = () => {
       date: '2023',
       link: pythoncertificate
     },
+
     {
       id: 2,
       title: 'HTML & CSS Course',
@@ -64,6 +67,13 @@ export const Certification: React.FC = () => {
       issuer: 'CCC',
       date: '2024',
       link : ccc_Certificate
+    },
+    {
+      id: 7,
+      title: 'AI tools Workshop',
+      issuer: 'Be10x ',
+      date: '2025',
+      link : AI_tools
     }
   ];
 

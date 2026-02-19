@@ -1,220 +1,258 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Github, ExternalLink } from 'lucide-react';
-import APIIcon from "../img/APIIcon.png";
-import BotIcon from "../img/BotIcon.webp";
+import { motion} from 'framer-motion';
+import AI_studio_img from '../img/AI_studio_img.png';
+import MyJarvis from '../img/MyJarvis_img.png';
+import Link3D from '../img/Link3D_img.png';
+import AI_DA from '../img/Automated_DA_img.png';
+import Tech_Analytics from '../img/tech_out_img.png';
+import Ecom_Dashboard from '../img/E-commerce_img.png';
 
-import pricewise2 from "../img/pricewise2.png";
+type ProjectCategory = 'SDE' | 'AI' | 'DA';
+
 interface Project {
   id: number;
   title: string;
-  description: string;
+  shortDescription: string;
   detailedDescription: string;
   technologies: string[];
   image: string;
   github?: string;
   liveDemo?: string;
-  date: string;
+  categories: ProjectCategory[];
+  videodemo?: string;
 }
 
 export const Projects: React.FC = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const [hoveredProjectId, setHoveredProjectId] = useState<number | null>(null);
+  const [activeCategory, setActiveCategory] =
+    useState<'All' | ProjectCategory>('All');
 
   const projects: Project[] = [
     {
       id: 1,
-      title: 'Movie Character Chatbot',
-      description: 'A chatbot which responds like the movie character you choose to talk to',
-      detailedDescription: 'A chatbot which responds like the movie character you choose to talk. There are more than 30+ fictional characters related to different movie industries (Tollywood, Bollywood, Hollywood). You can clear your doubts with them or ask anything—they will respond according to the personality they have in that movie.',
-      technologies: ['HTML', 'CSS', 'JavaScript', 'Python'],
-      image: BotIcon,
-      github: 'https://github.com/SistlaVishva04/MovieCharacters_Chatbot',
-      liveDemo: 'https://drive.google.com/file/d/1GmecZ5doPxpaUvs0fw-DgEv-MCNFKGwU/view?usp=drivesdk ',
-      date: 'Apr 2025'
+      title: 'AI Flow Studio',
+      shortDescription: 'Scalable RAG-based document query system.',
+      detailedDescription:
+        'End-to-end RAG pipeline with document ingestion, chunking, vector indexing using ChromaDB, and semantic retrieval. Integrated Gemini API for grounded response generation.',
+      technologies: [
+        'FastAPI',
+        'React',
+        'PostgreSQL',
+        'ChromaDB',
+        'Docker',
+        'Gemini API'
+      ],
+      image: AI_studio_img,
+      github: 'https://github.com/SistlaVishva04/AI-flow_with_rag',
+      videodemo:'https://drive.google.com/file/d/1Q8N1EZl6pqX5cOe8jqppUQbperxgjqOc/view?usp=drive_link',
+ 
+      categories: ['SDE', 'AI']
     },
     {
       id: 2,
-      title: 'PriceWise',
-      description: 'A E-commerce website which helps users to compare prices across multiple platforms',
-      detailedDescription: 'WPrice is a smart online price comparison platform I built to help users make informed shopping decisions. It allows users to browse a wide range of products and instantly compare prices across top e-commerce platforms like Amazon, Flipkart, and Meesho. With a clean, user-friendly interface, WPrice ensures a seamless experience where users can view product details, ratings, and quickly redirect to their preferred platform to purchase',
-      technologies: ['React', 'Node.js', 'Express', 'typescript'],
-      image: pricewise2,
-      github: 'https://github.com/SistlaVishva04/PriceWiseProject',
-      date: 'June-2025'
+      title: 'MyJarvis',
+      shortDescription: 'Real-time voice-enabled GenAI assistant.',
+      detailedDescription:
+        'Voice assistant integrating Speech-to-Text → Gemini API → Text-to-Speech with conversational memory and secure per-user authentication.',
+      technologies: [
+        'React',
+        'TypeScript',
+        'Node.js',
+        'Supabase',
+        'Gemini API'
+      ],
+      image: MyJarvis,
+      github: 'https://github.com/SistlaVishva04/myyjarviss',
+      liveDemo: 'https://myyjarviss.lovable.app/',
+      categories: ['SDE', 'AI']
     },
     {
       id: 3,
-      title: 'API Keys Generator',
-      description: 'Web platform providing free access to public API keys',
-      detailedDescription: 'Created a web-based API Keys Generator platform that grants users free access to a vast number of public API keys depending on their requirements, such as AI models (OpenAI, Gemini), weather services, maps, and more.',
-      technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
-      image: APIIcon,
-      github: 'https://github.com/SistlaVishva04/APIKeyGenerator',
-      liveDemo: 'https://drive.google.com/file/d/1GrGVimqaJfeLN17RGbXt5uHAYYE4tuE1/view?usp=drivesdk',
-      date: 'Apr 2025'
+      title: 'Link3D',
+      shortDescription: 'Secure URL shortening platform with analytics.',
+      detailedDescription:
+        'Authenticated link management system with expiration control, analytics tracking, and user-scoped lifecycle management.',
+      technologies: ['React', 'TypeScript', 'Supabase', 'REST APIs'],
+      image: Link3D,
+      github: '#',
+      liveDemo: 'https://link3d.lovable.app/',
+      categories: ['SDE']
+    },
+    {
+      id: 4,
+      title: 'AI Data Analysis Automation',
+      shortDescription: 'AI-driven automated EDA assistant.',
+      detailedDescription:
+        'Automated data cleaning, feature engineering, statistical summaries, and visualization generation using Python and AI workflows.',
+      technologies: [
+        'Python',
+        'Pandas',
+        'NumPy',
+        'Matplotlib',
+        'Seaborn'
+      ],
+      image: AI_DA,
+      liveDemo: 'https://opal.google/app/1SJqW5IzHEbM0PmX6g-C3TZ82OkmvnoHv',
+      categories: ['AI', 'DA']
+    },
+    {
+      id: 5,
+      title: 'Tech Outsourcing Market Analytics',
+      shortDescription: 'ROI & salary benchmarking dashboard.',
+      detailedDescription:
+        'Analyzed global salary datasets and built Power BI dashboards demonstrating 70%+ outsourcing cost savings.',
+      technologies: ['Python', 'Power BI', 'Excel'],
+      image: Tech_Analytics,
+      categories: ['DA']
+    },
+    {
+      id: 6,
+      title: 'E-commerce Sales Dashboard',
+      shortDescription: 'Interactive 50k+ record Power BI dashboard.',
+      detailedDescription:
+        'Analyzed sales, profit trends, discount impact, and regional performance using DAX modeling and advanced BI techniques.',
+      technologies: ['Power BI', 'DAX', 'Excel'],
+      image: Ecom_Dashboard,
+      videodemo:'https://drive.google.com/file/d/1j8CqUrlMk8Rfm4HRTvsLS6iByv08vqzx/view?usp=sharing',
+      categories: ['DA']
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const projectVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
-  const popupVariants = {
-    hidden: { opacity: 0, y: 10, scale: 0.95 },
-    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.2 } },
-    exit: { opacity: 0, y: 10, scale: 0.95, transition: { duration: 0.15 } },
-  };
+  const filteredProjects =
+    activeCategory === 'All'
+      ? projects
+      : projects.filter(project =>
+          project.categories.includes(activeCategory)
+        );
 
   return (
-    <section id="projects" className="section bg-dark-50 dark:bg-dark-900">
-      <div className="container" ref={ref}>
-        <motion.div 
-          className="section-title"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-dark-900 dark:text-white">My Projects</h2>
-          <div className="w-20 h-1 bg-primary-600 dark:bg-primary-400 mx-auto mt-3 mb-6"></div>
-          <p className="text-dark-600 dark:text-dark-300 max-w-3xl mx-auto">
-            A selection of projects I've worked on, showcasing my skills and experience
-          </p>
-        </motion.div>
+    <section id="projects" className="section">
+      <div className="container">
 
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-        >
-          {projects.map((project) => (
+        {/* Title */}
+        <div className="text-center mb-10">
+          <h2 className="dark:text-white">Projects</h2>
+          <div className="w-20 h-1 bg-primary-600 mx-auto mt-3 mb-6"></div>
+        </div>
+
+        {/* Filter Buttons */}
+        <div className="flex justify-center gap-4 mb-12 flex-wrap">
+          {['All', 'SDE', 'AI', 'DA'].map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat as any)}
+              className={`px-5 py-2 rounded-full border transition ${
+                activeCategory === cat
+                  ? 'bg-primary-600 text-white'
+                  : 'bg-white dark:bg-gray-800 dark:text-white'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Project Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project) => (
             <motion.div
               key={project.id}
-              variants={projectVariants}
-              className="project-card relative overflow-hidden rounded-xl bg-white dark:bg-dark-800 shadow-md"
-              onMouseEnter={() => setHoveredProjectId(project.id)}
-              onMouseLeave={() => setHoveredProjectId(null)}
-              whileHover={{ y: -5 }}
+              className="relative group rounded-xl overflow-hidden shadow-lg"
+              whileHover={{ scale: 1.02 }}
             >
-              <div className="h-46 overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-semibold text-dark-900 dark:text-white">{project.title}</h3>
-                  <span className="text-sm text-dark-500 dark:text-dark-300">{project.date}</span>
+              {/* Image */}
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-60 object-cover"
+              />
+
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-between">
+
+                <div>
+                  <h3 className="text-white text-lg font-semibold mb-2">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-gray-300 text-sm mb-3">
+                    {project.detailedDescription}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {project.technologies.map((tech, index) => (
+                      <span
+                        key={index}
+                        className="text-xs px-2 py-1 bg-gray-700 rounded text-white"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex gap-2 mb-3">
+                    {project.categories.map((cat, index) => (
+                      <span
+                        key={index}
+                        className="text-xs px-2 py-1 bg-primary-600 rounded text-white"
+                      >
+                        {cat}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <p className="text-dark-600 dark:text-dark-300 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.slice(0, 3).map((tech, index) => (
-                    <span 
-                      key={index}
-                      className="text-xs px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 3 && (
-                    <span className="text-xs px-2 py-1 bg-dark-100 dark:bg-dark-700 text-dark-500 dark:text-dark-300 rounded-full">
-                      +{project.technologies.length - 3}
-                    </span>
+
+                {/* Links */}
+                <div className="flex gap-4 text-sm">
+                  <div className="flex gap-4 text-sm">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary-400 hover:underline"
+                      >
+                        GitHub
+                      </a>
+                    )}
+
+                    {project.liveDemo && (
+                      <a
+                        href={project.liveDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary-400 hover:underline"
+                      >
+                        Live
+                      </a>
+                    )}
+                  </div>
+                  {project.videodemo && (
+                    <a
+                    href={project.videodemo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-400 hover:underline"
+                  >
+                    Video Demo
+                  </a>  
                   )}
                 </div>
-                
-                {/* Hover Indicator */}
-                <div className="text-center text-dark-500 dark:text-dark-300 text-sm italic">
-                  Hover for details
-                </div>
               </div>
 
-              {/* Hover Popup */}
-              <AnimatePresence>
-                {hoveredProjectId === project.id && (
-                  <motion.div
-                    className="absolute top-0 left-0 right-0 bottom-0 bg-white/95 dark:bg-dark-800/95 backdrop-blur-sm p-6 overflow-y-auto"
-                    variants={popupVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                  >
-                    <div className="h-full flex flex-col">
-                      <div>
-                        <div className="flex justify-between items-center mb-3">
-                          <h3 className="text-xl font-bold text-dark-900 dark:text-white">{project.title}</h3>
-                          <span className="text-sm font-medium text-dark-500 dark:text-dark-300">{project.date}</span>
-                        </div>
+              {/* Bottom Title (Visible Always) */}
+              <div className="p-4 bg-white dark:bg-gray-800">
+                <h3 className="font-semibold dark:text-white">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-gray-500">
+                  {project.shortDescription}
+                </p>
+              </div>
 
-                        <p className="text-dark-600 dark:text-dark-300 mb-4 text-sm">
-                          {project.detailedDescription}
-                        </p>
-
-                        <div className="mb-4">
-                          <h4 className="text-sm font-semibold mb-2 text-dark-900 dark:text-white">Technologies Used</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {project.technologies.map((tech, index) => (
-                              <span 
-                                key={index}
-                                className="text-xs px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="mt-auto flex gap-3">
-                        {project.github && (
-                          <a 
-                            href={project.github} 
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-outline flex-1 flex items-center justify-center gap-1 text-sm py-1 text-dark-900 dark:text-white"
-                          >
-                            <Github size={14} />
-                            <span>GitHub</span>
-                          </a>
-                        )}
-                        {project.liveDemo && (
-                          <a 
-                            href={project.liveDemo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-primary flex-1 flex items-center justify-center gap-1 text-sm py-1"
-                          >
-                            <ExternalLink size={14} />
-                            <span>Live Demo</span>
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
+
       </div>
     </section>
   );

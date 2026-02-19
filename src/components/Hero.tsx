@@ -3,7 +3,8 @@ import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
-import mydp1 from '../img/my_img.jpg';
+import mydp1 from '../img/myimage1.jpeg';
+
 export const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 pb-10">
@@ -33,21 +34,21 @@ export const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <TypeAnimation
-                sequence={[
-                  'AI Assistant Developer',
-                  1000,
-                  'Vibe Coder',
-                  1000,
-                  'Software Developer',
-                  1000,
-                  'Data Analyst',
-                  1000,
-                ]}
-                wrapper="span"
-                speed={50}
-                repeat={Infinity}
-              />
+             <TypeAnimation
+              sequence={[
+                'Software Engineer',
+                1500,
+                'AI & ML Engineer',
+                1500,
+                'Full-Stack Developer',
+                1500,
+                'Data Analytics Specialist',
+                1500,
+              ]}
+              wrapper="span"
+              speed={50}
+              repeat={Infinity}
+            />
             </motion.div>
             
             <motion.p
@@ -56,8 +57,7 @@ export const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              AI-Assisted Developer & Vibe Engineer
-Crafting intelligent web solutions and data-driven applications with AI-powered tools.
+              Building scalable systems, intelligent APIs, and data-driven solutions powered by AI.
             </motion.p>
             
             <motion.div

@@ -13,40 +13,40 @@ export const Skills: React.FC = () => {
     threshold: 0.1,
   });
 
-  const skillCategories: SkillCategory[] = [
-    { 
-      name: 'Programming Languages', 
-      skills: ['Python', 'Java', 'C'] 
-    },
-    { 
-      name: 'Web Development', 
-      skills: ['React', 'Node.js', 'HTML', 'CSS', 'JavaScript', 'Flask', 'Bootstrap','Django','REST APIs'] 
-    },
-    { 
-      name: 'AI & ML', 
-      skills: ['Streamlit', 'Data Preprocessing & Feature Engineering', 'Machine Learning Models','Data Analysis',] 
-    },
-    { 
-      name: 'Version Control ', 
-      skills: ['Git', 'GitHub'] 
-    },
-    { 
-      name: 'Deployment', 
-      skills: ['Netlify', 'Render'] 
-    },
-    { 
-      name: 'Databases', 
-      skills: ['MongoDB','MySQL', 'JDBC'] 
-    },
-    { 
-      name: 'Data Visualization', 
-      skills: ['PowerBI', 'Tableau', 'Matplotlib', 'Seaborn'] 
-    },
-    { 
-      name: 'Other Skills', 
-      skills: ['Prompt Engineering','Vibe Coder', 'Problem Solving'] 
-    }
-  ];
+const skillCategories: SkillCategory[] = [
+  { 
+    name: 'Languages', 
+    skills: ['Python', 'Java', 'JavaScript', 'TypeScript', 'C', 'SQL'] 
+  },
+  { 
+    name: 'Frontend', 
+    skills: ['React.js', 'HTML', 'CSS'] 
+  },
+  { 
+    name: 'Backend', 
+    skills: ['Node.js', 'Express', 'Flask', 'FastAPI', 'RESTful APIs'] 
+  },
+  { 
+    name: 'Databases', 
+    skills: ['MySQL', 'PostgreSQL', 'MongoDB'] 
+  },
+  { 
+    name: 'AI / Machine Learning', 
+    skills: ['Scikit-learn', 'LLM', 'NLP', 'ML/DL Models', 'GenAI Integration', 'RAG'] 
+  },
+  { 
+    name: 'Data Tools', 
+    skills: ['Pandas', 'NumPy', 'Power BI', 'Tableau', 'Matplotlib'] 
+  },
+  { 
+    name: 'Cloud & Deployment', 
+    skills: ['AWS (Basic)', 'Supabase', 'Netlify', 'Vercel', 'Render', 'Railway'] 
+  },
+  { 
+    name: 'Tools', 
+    skills: ['Git', 'GitHub', 'Postman', 'VS Code', 'Docker (Basic)'] 
+  }
+];
 
   const containerVariants = {
     hidden: { opacity: 0 },

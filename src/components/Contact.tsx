@@ -169,11 +169,16 @@ const handleSubmit = async (e: React.FormEvent) => {
             <h3 className="text-2xl font-semibold mb-6 dark:text-white">Get In Touch</h3>
             
             <motion.div variants={itemVariants} className="mb-8">
+              <h3 className="text-2xl font-semibold mb-4 dark:text-white">
+                Open to Opportunities
+              </h3>
               <p className="text-dark-600 dark:text-dark-300 mb-6">
-                I'm currently available for freelance work, part-time positions, or internships. 
-                If you have a project that needs some creative touch, I'd love to hear about it.
+                  I’m actively seeking internship and entry-level roles in Software Engineering, 
+                  AI/ML, or Data Analytics. I’m excited to contribute to impactful projects, 
+                  collaborate with strong teams, and apply my technical skills to build 
+                  scalable, data-driven solutions.
               </p>
-              
+                            
               <div className="space-y-4 dark:text-dark-300">
                 <div className="flex items-start">
                   <div className="flex-shrink-0 p-2 bg-primary-100 dark:bg-primary-900/30 rounded-full mr-4">
