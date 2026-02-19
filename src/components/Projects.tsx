@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion} from 'framer-motion';
 import AI_studio_img from '../img/AI_studio_img.png';
 import MyJarvis from '../img/MyJarvis_img.png';
-import Link3D from '../img/Link3D_img.png';
+import Link3D from '../img/Link3d_img.png';
 import AI_DA from '../img/Automated_DA_img.png';
 import Tech_Analytics from '../img/tech_out_img.png';
 import Ecom_Dashboard from '../img/E-commerce_img.png';
