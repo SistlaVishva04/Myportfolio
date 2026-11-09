@@ -1,12 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { Menu, Moon, Sun, X } from 'lucide-react';
 
 interface HeaderProps {
   theme: 'light' | 'dark';
   toggleTheme: () => void;
 }
+
+const navLinks = [
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'education', label: 'Education' },
+  { id: 'certifications', label: 'Certifications' },
+  { id: 'contact', label: 'Contact' },
+];
 
 export const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,155 +23,106 @@ export const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'education', label: 'Education' },
-    { id: 'certifications', label: 'Certifications' },
-    { id: 'contact', label: 'Contact' },
-  ];
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries.filter((entry) => entry.isIntersecting);
+        const currentSection = visibleSections.sort(
+          (first, second) => second.intersectionRatio - first.intersectionRatio,
+        )[0];
+        if (currentSection) setActiveSection(currentSection.target.id);
+      },
+      { rootMargin: '-20% 0px -65% 0px' },
+    );
 
-  const handleSetActive = (to: string) => {
-    setActiveSection(to);
-  };
+    navLinks.forEach(({ id }) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const renderLinks = (mobile = false) => navLinks.map((link) => (
+    <a
+      key={link.id}
+      href={`#${link.id}`}
+      onClick={() => {
+        setActiveSection(link.id);
+        if (mobile) setIsMobileMenuOpen(false);
+      }}
+      className={`nav-link${activeSection === link.id ? ' is-active' : ''}`}
+      aria-current={activeSection === link.id ? 'location' : undefined}
+    >
+      {link.label}
+    </a>
+  ));
+
+  const themeButton = (
+    <button
+      className="icon-button"
+      type="button"
+      onClick={toggleTheme}
+      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+    >
+      {theme === 'light' ? <Moon aria-hidden="true" size={18} /> : <Sun aria-hidden="true" size={18} />}
+    </button>
+  );
 
   return (
-    <header 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'py-3 bg-white/90 dark:bg-dark-900/90 backdrop-blur-md shadow-md' 
-          : 'py-5 bg-transparent'
-      }`}
-    >
-      <div className="container flex items-center justify-between">
-        <Link
-          to="home"
-          spy={true}
-          smooth={true}
-          offset={-100}
-          duration={500}
-          className="text-2xl font-bold font-heading cursor-pointer"
+    <header className={`site-header${isScrolled ? ' is-scrolled' : ''}`}>
+      <div className="container header-shell">
+        <a
+          href="#home"
+          onClick={() => {
+            setActiveSection('home');
+            setIsMobileMenuOpen(false);
+          }}
+          className="brand"
+          aria-label="S V Vishnu Vamsi, home"
         >
-          <span className="text-primary-600 dark:text-primary-400">Vishnu</span> 
-          <span>Vamsi</span>
-        </Link>
+          S V Vishnu Vamsi
+        </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.id}
-              to={link.id}
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={500}
-              onSetActive={handleSetActive}
-              className={`relative px-1 py-2 text-sm font-medium transition-colors cursor-pointer
-                ${
-                  activeSection === link.id
-                    ? 'text-primary-600 dark:text-primary-400'
-                    : 'text-dark-600 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400'
-                }
-              `}
-            >
-              {link.label}
-              {activeSection === link.id && (
-                <motion.span
-                  layoutId="underline"
-                  className="absolute left-0 right-0 bottom-0 h-0.5 bg-primary-600 dark:bg-primary-400"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              )}
-            </Link>
-          ))}
-
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-          >
-            {theme === 'light' ? (
-              <Moon size={20} className="text-dark-600" />
-            ) : (
-              <Sun size={20} className="text-dark-300" />
-            )}
-          </button>
+        <nav className="desktop-nav" aria-label="Primary navigation">
+          {renderLinks()}
         </nav>
 
-        {/* Mobile Menu Button */}
-        <div className="flex items-center md:hidden">
+        <div className="header-tools header-tools--desktop">
+          {themeButton}
+        </div>
+
+        <div className="header-tools header-tools--mobile">
+          {themeButton}
           <button
-            onClick={toggleTheme}
-            className="p-2 mr-2 rounded-full hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            className="icon-button menu-toggle"
+            type="button"
+            onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
-            {theme === 'light' ? (
-              <Moon size={20} className="text-dark-600" />
-            ) : (
-              <Sun size={20} className="text-dark-300" />
-            )}
-          </button>
-          
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 rounded-md hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X size={24} className="text-dark-600 dark:text-dark-300" />
-            ) : (
-              <Menu size={24} className="text-dark-600 dark:text-dark-300" />
-            )}
+            {isMobileMenuOpen ? <X aria-hidden="true" size={20} /> : <Menu aria-hidden="true" size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white dark:bg-dark-900 border-t dark:border-dark-800"
-          >
-            <div className="container py-4 flex flex-col space-y-3">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.id}
-                  to={link.id}
-                  spy={true}
-                  smooth={true}
-                  offset={-100}
-                  duration={500}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`py-2 px-3 rounded-md transition-colors ${
-                    activeSection === link.id
-                      ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400'
-                      : 'text-dark-600 dark:text-dark-300 hover:bg-dark-50 dark:hover:bg-dark-800'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <nav
+        className="mobile-nav"
+        id="mobile-navigation"
+        aria-label="Mobile navigation"
+        hidden={!isMobileMenuOpen}
+      >
+        <div className="container mobile-nav-inner">
+          {renderLinks(true)}
+        </div>
+      </nav>
     </header>
   );
 };

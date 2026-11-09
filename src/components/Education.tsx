@@ -21,25 +21,25 @@ export const Education: React.FC = () => {
   const educationList: Education[] = [
     {
       id: 1,
-      institution: 'Anurag Group Of Institutions, Hyderabad',
-      degree: 'B. Tech. In Computer Science',
-      duration: 'Aug 2022 - Present',
-      grade: 'CGPA: 8.32',
+      institution: 'Anurag University, Hyderabad',
+      degree: 'B.Tech, Computer Science',
+      duration: '2022 - 2026',
+      grade: 'CGPA: 8.4/10',
       // description: 'Currently pursuing my degree in Computer Science and Engineering, focusing on software development and programming.'
     },
     {
       id: 2,
-      institution: 'Sri Chaitanya College Of Education, Hyderabad',
+      institution: 'Sri Chaitanya Junior College',
       degree: 'Intermediate',
-      duration: 'Apr 2020 - Apr 2022',
-      grade: 'CGPA: 9.6',
+      duration: '2022',
+      grade: '96%',
     },
     {
       id: 3,
-      institution: 'Sri Chaitanya School, Hyderabad',
+      institution: 'Sri Chaitanya High School',
       degree: 'SSC',
-      duration: 'Jun 2017 - Apr 2020',
-      grade: 'CGPA: 10',
+      duration: '2020',
+      grade: '10/10',
     }
   ];
 
