@@ -1,134 +1,58 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Code, Book, Briefcase, User } from 'lucide-react';
-import MYResume from '../resume/Vamsi_Sistla_Resume (SDE).pdf';
-export const About: React.FC = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+import MYResume from '../resume/Vishnu_Vamsi_Sistla_Resume.pdf';
 
-  const variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.1 * i,
-        duration: 0.5,
-      },
-    }),
-  };
+const stats = [
+  { title: 'Programming Languages', value: '5+' },
+  { title: 'Projects', value: '10+' },
+  { title: 'Certifications', value: '3+' },
+  { title: 'Graduation Year', value: '2026' },
+];
 
-  const stats = [
-    { 
-      icon: <Code className="w-6 h-6 text-primary-600 dark:text-primary-400" />,
-      title: 'Programming Languages',
-      value: '5+',
-    },
-    { 
-      icon: <Briefcase className="w-6 h-6 text-primary-600 dark:text-primary-400" />,
-      title: 'Projects',
-      value: '10+',
-    },
-    { 
-      icon: <Book className="w-6 h-6 text-primary-600 dark:text-primary-400" />,
-      title: 'Certifications',
-      value: '3+',
-    },
-    { 
-      icon: <User className="w-6 h-6 text-primary-600 dark:text-primary-400" />,
-      title: 'Graduation Year',
-      value: '2026',
-    },
-  ];
-
-  return (
-    <section id="about" className="section bg-dark-50 dark:bg-dark-900">
-      <div className="container">
-        <motion.div 
-          className="section-title"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          ref={ref}
+export const About: React.FC = () => (
+  <section id="about" className="section section--paper" aria-labelledby="about-title">
+    <div className="container about-grid">
+      <div className="about-intro opens">
+        <h2 id="about-title">About me</h2>
+        <a
+          className="action-link action-link--secondary"
+          href={MYResume}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(event) => {
+            event.preventDefault();
+            window.open(MYResume, '_blank', 'noopener,noreferrer');
+          }}
         >
-          <h2 className="dark:text-white">About Me</h2>
-          <div className="w-20 h-1 bg-primary-600 dark:bg-primary-400 mx-auto mt-3 mb-6"></div>
-          <p className="text-dark-500 dark:text-dark-400 max-w-3xl mx-auto">
-            Discover more about my background, skills, and what drives me
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            custom={1}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            variants={variants}
-            className="space-y-6"
-          >
-            <h3 className="text-2xl font-semibold mb-4 dark:text-white">Who I Am</h3>
-
-<p className="text-dark-600 dark:text-dark-300">
-  I’m a Software Engineer passionate about building scalable systems and intelligent applications. 
-  I work across backend, full-stack, and AI-driven solutions using Java, Python, Node.js, and React. 
-  With strong foundations in Data Structures and Algorithms, I focus on writing clean, efficient code 
-  and designing reliable REST APIs and production-ready architectures.
-</p>
-
-<p className="text-dark-600 dark:text-dark-300">
-  I also specialize in AI and Data Analytics, building LLM-powered systems, automation workflows, 
-  and interactive dashboards using Python, SQL, Power BI, and modern ML tools. 
-  I enjoy integrating AI into real-world workflows to improve efficiency, accuracy, and decision-making, 
-  and I’m always eager to work on impactful projects that combine engineering with intelligent insights.
-</p>
-
-            <motion.div
-              className="pt-4"
-              custom={2}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
-              variants={variants}
-            >
-              <a 
-                href="#" 
-                className="btn-primary"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.open(MYResume, '_blank');
-                }}
-              >
-                View Resume
-              </a>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            custom={3}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            variants={variants}
-            className="grid grid-cols-2 gap-6"
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                custom={index + 4}
-                variants={variants}
-                className="bg-white dark:bg-dark-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center"
-              >
-                <div className="flex justify-center mb-3">{stat.icon}</div>
-                <h4 className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                  {stat.value}
-                </h4>
-                <p className="text-dark-500 dark:text-dark-400">{stat.title}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+          View resume
+        </a>
       </div>
-    </section>
-  );
-};
+
+      <div className="about-copy">
+        <p>
+          I’m a Software Engineer passionate about building scalable systems and intelligent applications.
+          I work across backend, full-stack, and AI-driven solutions using Java, Python, Node.js, and React.
+          With strong foundations in Data Structures and Algorithms, I focus on writing clean, efficient code
+          and designing reliable REST APIs and production-ready architectures.
+        </p>
+        <p>
+          I also specialize in AI and Data Analytics, building LLM-powered systems, automation workflows,
+          and interactive dashboards using Python, SQL, Power BI, and modern ML tools.
+          I enjoy integrating AI into real-world workflows to improve efficiency, accuracy, and decision-making,
+          and I’m always eager to work on impactful projects that combine engineering with intelligent insights.
+        </p>
+        <p className="role-index">
+          Software Engineer, AI &amp; ML Engineer, Full-Stack Developer, Data Analytics Specialist
+        </p>
+      </div>
+
+      <dl className="about-stats">
+        {stats.map((stat) => (
+          <div className="about-stat" key={stat.title}>
+            <dt>{stat.title}</dt>
+            <dd>{stat.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+);
