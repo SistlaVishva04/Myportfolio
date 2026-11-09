@@ -63,7 +63,7 @@ const projects: Project[] = [
     image: Link3DImage,
     imageWidth: 1536,
     imageHeight: 1024,
-    github: '#',
+    // github: '#',
     liveDemo: 'https://link3d.lovable.app/',
     categories: ['SDE'],
   },
