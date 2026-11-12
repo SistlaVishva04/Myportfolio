@@ -691,6 +691,38 @@
   border-top: var(--rule-heavy) solid var(--color-ink);
 }
 
+.education-timeline-item.has-next {
+  border-left: 2px solid var(--color-rule-2);
+}
+
+.education-marker {
+  background: var(--color-accent);
+}
+
+.education-card {
+  background: var(--color-paper-2);
+  color: var(--color-ink-2);
+}
+
+.education-card h3,
+.education-institution {
+  color: var(--color-ink);
+}
+
+.education-intro,
+.education-duration {
+  color: var(--color-muted);
+}
+
+.education-grade {
+  background: var(--color-paper-3);
+  color: var(--color-ink-2);
+}
+
+.education-description {
+  color: var(--color-ink-2);
+}
+
 .education-row {
   align-items: start;
   border-bottom: var(--rule-hair) solid var(--color-rule);
