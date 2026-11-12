@@ -41,7 +41,7 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: 'MyJarvis',
+    title: 'MyVishva',
     shortDescription: 'Real-time voice-enabled GenAI assistant.',
     detailedDescription:
       'Voice assistant integrating Speech-to-Text → Gemini API → Text-to-Speech with conversational memory and secure per-user authentication.',
@@ -50,7 +50,7 @@ const projects: Project[] = [
     imageWidth: 1536,
     imageHeight: 1024,
     github: 'https://github.com/SistlaVishva04/myyjarviss',
-    liveDemo: 'https://myyjarviss.lovable.app/',
+    liveDemo: 'https://myvishva.netlify.app/',
     categories: ['SDE', 'AI'],
   },
   {
